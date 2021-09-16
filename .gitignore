@@ -1,0 +1,5 @@
+RUN.bat
+.env
+config.json
+package-lock.json
+node_modules/
