@@ -19,7 +19,7 @@ module.exports = {
 
         const currentTrack = queue.current;
         const tracks = queue.tracks.slice(0, 10).map((m, i) => {
-            return `${i + 1}. **${m.title}** - ([link](${m.url}))`;
+            return `${i + 1}. **${m.title}**`; //  - ([link](${m.url}))
         });
 
         message.reply({
@@ -33,7 +33,7 @@ module.exports = {
                             : ""
                     }`,
                     color: 0xff0000,
-                    fields: [{ name: "Đang chơi", value: `**${currentTrack.title}** - [link](${currentTrack.url})` }]
+                    fields: [{ name: "Đang chơi", value: `**${currentTrack.title}**` }] // - [link](${currentTrack.url})
                 }
             ], allowedMentions: { repliedUser: false }
         });

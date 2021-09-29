@@ -14,6 +14,8 @@ module.exports = {
      * @param {String[]} args 
      */
     async execute(client, message, args) {
+        if(!args[0]) message.lineReply("Cung cấp video để phát");
+         
         const query = args.join(" ");
         const searchResult = await client.player
             .search(query, {
@@ -38,7 +40,11 @@ module.exports = {
         }
 
         message.lineReply(`Đang tải...`);
-        searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
+
+        await searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
+        
+        searchResult.playlist
+
         if (!queue.playing) await queue.play();
     }
 }

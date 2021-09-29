@@ -6,14 +6,13 @@ module.exports = {
     category: "music",
 
     async execute(client, message, args) {
+        if(message.member.voice.channel && message.member.voice.channel == message.guild.me.voice.channel) return;
 
-        if(!message.guild.member.me.voice.channel) {
-            message.react("👌");
-            joinVoiceChannel({
-                channelId: message.guildmember.me.voice.channel.id,
-                guildId: message.guildId,
-                adapterCreator: message.guild.voiceAdapterCreator,
-             });
-        }
+        message.react("👌");
+        joinVoiceChannel({
+            channelId: message.member.voice.channel.id,
+            guildId: message.guildId,
+            adapterCreator: message.guild.voiceAdapterCreator,
+        });
     }
 }
